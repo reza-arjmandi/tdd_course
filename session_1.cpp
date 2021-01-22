@@ -2,21 +2,7 @@
 #include <numeric>
 #include <vector>
 
-class Math{
-
-public:
-
-    template<typename T, typename U>
-    auto add(T a, U b) {
-        return a+b;
-    }
-
-    template<typename ContainerType>
-    auto add(ContainerType& container) {
-        return std::accumulate(std::begin(container), std::end(container), 0.0);
-    }
-
-};
+#include "Math.h"
 
 class test_fixture : public testing::Test {
 
@@ -54,4 +40,8 @@ TEST_F(test_fixture, add_function_should_add_up_an_array_of_real_numbers) {
 TEST_F(test_fixture, add_function_should_add_up_an_initializer_list) {
     auto init_list = {1,2,3,4};
     ASSERT_EQ(math.add(init_list), 10);
+}
+
+TEST_F(test_fixture, add_function_should_takes_several_parameters) {
+    ASSERT_EQ(math.add(1,2,3,4), 10);
 }
