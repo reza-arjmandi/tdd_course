@@ -26,3 +26,7 @@ TEST_F(SoundexEncoding, pads_with_zeros_to_ensure_three_digits) {
 TEST_F(SoundexEncoding, replaces_consonents_with_appropriate_digits) {
     ASSERT_THAT(soundex.encode("Ab"), Eq("A100"));
 }
+
+TEST_F(SoundexEncoding, ingnores_non_alphabetics) {
+    ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
+}
