@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Soundex.h"
+#include "include/Soundex.h"
 
 using namespace testing;
 
@@ -61,4 +61,8 @@ TEST_F(SoundexEncoding, ignores_case_when_encoding_consonants) {
 
 TEST_F(SoundexEncoding, combines_duplicate_codes_when_2nd_letter_duplicates_1st) {
     ASSERT_THAT(soundex.encode("Bbcd"), Eq("B230"));
+}
+
+TEST_F(SoundexEncoding, does_not_combine_duplicate_encodings_separated_by_vowels) {
+    ASSERT_THAT(soundex.encode("Jbob"), Eq("J110"));
 }

@@ -12,6 +12,9 @@ add_executable(
     main main.cpp 
     math_tests.cpp
     soundex_tests.cpp
+    Soundex.cpp
+    string_util_tests.cpp
+    char_util_tests.cpp
     )
 target_include_directories(main PUBLIC ${GMOCK_INCLUDE_DIRS})
 set_property(TARGET main PROPERTY CXX_STANDARD 17)
